@@ -1,4 +1,6 @@
 streamlit
+faiss-cpu
+faiss-gpu
 langchain
 langchain-community
 langchain-openai
