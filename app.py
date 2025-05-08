@@ -99,7 +99,7 @@ Your explanation:
 """)
 
 # --- Streamlit UI ---
-st.set_page_config(page_title="Math Tutor", layout="wide")
+st.set_page_config(page_title="Maths Tutor", layout="wide")
 st.title("📘 Guided Math Tutor Chatbot")
 
 # --- CSS Styling ---
@@ -146,10 +146,10 @@ for msg in st.session_state.messages:
     if msg["role"] == "user":
         st.markdown(f'<div class="user-message"><strong>👤 You:</strong><br>{msg["content"]}</div>', unsafe_allow_html=True)
     else:
-        st.markdown(f'<div class="assistant-message"><strong>📘 Math Tutor:</strong><br>{msg["content"]}</div>', unsafe_allow_html=True)
+        st.markdown(f'<div class="assistant-message"><strong>📘 Maths Tutor:</strong><br>{msg["content"]}</div>', unsafe_allow_html=True)
 
 # --- Chat input ---
-user_question = st.chat_input("Type your math question here...")
+user_question = st.chat_input("Type your maths question here...")
 
 # --- Unified Assistant Message Rendering ---
 if user_question:
@@ -158,12 +158,12 @@ if user_question:
 
     # Handle polite greeting
     if user_question.strip().lower() in ["hi", "hello", "hey", "good morning", "good afternoon", "good evening"]:
-        render_assistant_response("👋 Hello! I’m your math tutor assistant. Feel free to ask any math-related question, and I’ll guide you through the steps.")
+        render_assistant_response("👋 Hello! I’m your math tutor assistant. Feel free to ask any maths-related question, and I’ll guide you through the steps.")
     # Moderation check
     elif moderate_content(user_question):
         render_assistant_response("❌ Your input contains harmful content. Please revise it.")
     elif not is_question_math_related(user_question):
-        render_assistant_response("❌ I can only help with **math-related** questions.")
+        render_assistant_response("❌ I can only help with **maths-related** questions.")
     else:
         vectorstore = load_vectorstore()
         docs = get_relevant_docs(user_question, vectorstore)
