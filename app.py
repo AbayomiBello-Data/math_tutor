@@ -26,7 +26,7 @@ class StreamHandler(BaseCallbackHandler):
     def on_llm_new_token(self, token: str, **kwargs):
         self.text += token
         self.placeholder.markdown(
-            f'<div class="assistant-message"><strong>📘 Math Tutor:</strong><br>{self.text}</div>',
+            f'<div class="assistant-message"><strong>📘 Maths Tutor:</strong><br>{self.text}</div>',
             unsafe_allow_html=True,
         )
 
@@ -100,7 +100,7 @@ Your explanation:
 
 # --- Streamlit UI ---
 st.set_page_config(page_title="Maths Tutor", layout="wide")
-st.title("📘 Guided Math Tutor Chatbot")
+st.title("📘 Guided Maths Tutor Chatbot")
 
 # --- CSS Styling ---
 st.markdown("""
@@ -158,7 +158,7 @@ if user_question:
 
     # Handle polite greeting
     if user_question.strip().lower() in ["hi", "hello", "hey", "good morning", "good afternoon", "good evening"]:
-        render_assistant_response("👋 Hello! I’m your math tutor assistant. Feel free to ask any maths-related question, and I’ll guide you through the steps.")
+        render_assistant_response("👋 Hello! I’m your maths tutor assistant. Feel free to ask any maths-related question, and I’ll guide you through the steps.")
     # Moderation check
     elif moderate_content(user_question):
         render_assistant_response("❌ Your input contains harmful content. Please revise it.")
